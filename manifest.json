@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "ZenReader",
+  "version": "1.0",
+  "description": "A distraction-free reader mode for Chrome using Readability.js and Shadow DOM.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/readability.js", "content/content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["styles/reader.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
